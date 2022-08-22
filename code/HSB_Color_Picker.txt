@@ -1,0 +1,183 @@
+//HSB Variables
+int hue = 155;
+int sat = 163;
+int bright = 81;
+
+int hBack = 130;
+int sBack = 76;
+int bBack = 233;
+
+float scroll = 0;
+int select = 0;
+
+int vertical = 0;
+int horizontal = 0;
+boolean drawing = false;
+
+void setup(){
+  size (800, 800);
+  colorMode(HSB);
+  background(hBack, sBack, bBack);
+  textSize(20);
+  noStroke();
+  
+  drawX = width/2;
+  drawY = height/2;
+}
+
+void draw(){
+  //background(255);
+  drawUI(20,0);
+  
+  drawX += horizontal;
+  drawY += vertical;
+  
+  if(drawing){
+    drawThing();
+  }
+  
+  saveFrame("drawing-####.png");
+  //debug();
+}
+
+//Overall User Input with keyboard
+void keyPressed(){
+  
+  //WASD Key Control
+  //Moves Drawing Cursor Up
+  if(key == 'w' || key == 'W'){
+    if(drawY > height/10){
+      vertical = -2;
+    } else {
+      vertical = 0;
+    }
+  }
+    
+  //Moves selection Down
+  if(key == 's' || key == 'S'){
+    if(drawY < height){
+      vertical = 2;
+    } else {
+      vertical = 0;
+    }
+  }
+  
+  //Moves Drawing Cursor Left
+  if(key == 'a' || key == 'A'){
+    if(drawX > 0){
+      horizontal = -2;
+    } else {
+      horizontal = 0;
+    }
+  }
+    
+  //Moves selection Right
+  if(key == 'd' || key == 'D'){
+    if(drawX < width){
+      horizontal = 2;
+    } else {
+      horizontal = 0;
+    }
+  }
+  
+  //Starts Drawing
+  if(key == 'c' || key == 'C'){
+    drawing = true;
+  }
+  
+  if(key == 'r' || key == 'R'){
+    background(hBack, sBack, bBack);
+  }
+}
+
+void keyReleased(){
+  
+  //WASD Key Control
+  //Moves Drawing Cursor Up
+  if(key == 'w' || key == 'W'){
+    if(vertical == -2){
+      vertical = 0;
+    }
+  }
+    
+  //Moves selection Down
+  if(key == 's' || key == 'S'){
+    if(vertical == 2){
+      vertical = 0;
+    }
+  }
+  
+  //Moves Drawing Cursor Left
+  if(key == 'a' || key == 'A'){
+    if(horizontal == -2){
+      horizontal = 0;
+    }
+  }
+    
+  //Moves selection Right
+  if(key == 'd' || key == 'D'){
+    if(horizontal == 2){
+      horizontal = 0;
+    }
+  }
+  
+  //Starts Drawing
+  if(key == 'c' || key == 'C'){
+    drawing = false;
+  }
+}
+
+void mousePressed(){
+  if(select == 2){
+    select = 0;
+  } else {
+    select += 1;
+  }
+}
+
+void mouseWheel(MouseEvent event) {
+  scroll = event.getCount();
+  switch(select){
+      case 0:
+        if(hue >= 0 && hue <= 255){
+          hue += scroll;
+        }
+        if(hue < 0){hue = 0;}
+        if(hue > 255){hue = 255;}
+        break;
+        
+      case 1:
+        if(sat >= 0 && sat <= 255){
+          sat += scroll;
+        }
+        if(sat < 0){sat = 0;}
+        if(sat > 255){sat = 255;}
+        break;
+        
+      case 2:
+        if(bright >= 0 && bright <= 255){
+          bright += scroll;
+        }
+        if(bright < 0){bright = 0;}
+        if(bright > 255){bright = 255;}
+        break;
+    }
+  
+  println(scroll);
+}
+
+void debug(){
+  fill(250, 100);
+  
+  switch(select){
+    case 0:
+      println("Hue Selected");
+      break;
+    case 1:
+      println("Sat Selected");
+      break;
+    case 2:
+      println("Bright Selected");
+      break;
+  }
+}

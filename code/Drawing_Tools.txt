@@ -1,0 +1,14 @@
+int drawX = 0;
+int drawY = 0;
+
+///////////////FUNCTIONS///////////
+void drawThing(){
+  fill(hue,sat,bright);
+  circleBrush(10, drawX, drawY);
+  
+}
+
+//[TODO]: MAYBE ASK FRED ABOUT BRUSHES
+void circleBrush(int size, int lx, int ly){
+  ellipse(lx, ly, size, size);
+}

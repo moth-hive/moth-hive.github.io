@@ -1,0 +1,82 @@
+
+//////////////////VARIABLES/////////////////
+
+//Display Variables
+int boxSize = 40;
+int margin = 10;
+
+//Gradients vertical space
+int hueOffset = boxSize/2;
+int satOffset = boxSize/2 * 2;
+int brightOffset = boxSize/2 * 3;
+
+////////////////FUNCTIONS//////////////////
+
+//Draws the entire UI together
+void drawUI(int offsetX, int offsetY){
+  fill(100);
+  rect(0, 0, width,  height/10);
+  fill(150);
+  rect(offsetX - margin, offsetY + boxSize/2 - margin * 1.5, boxSize + 255 + offsetX + margin, boxSize/2 * 3 + margin, 25);
+  drawGradients(offsetX, offsetY);
+  drawNumbers(offsetX, offsetY);
+  drawSelect(offsetX, offsetY);
+
+  //Displays Final Color in a box
+  fill(hue, sat, bright);
+  square(offsetX, offsetY + boxSize/2, boxSize);
+}
+
+//Draws the HSB Gradient Bars
+void drawGradients(int offsetX, int offsetY){
+  //Hue Gradient
+  for(int i = 0; i < 255; i += 1){
+    fill(i, 255, 255);
+    rect(boxSize + 10 + offsetX + i, offsetY + hueOffset, 1, 5);
+  }
+  
+  //Saturation Gradient
+  for(int i = 0; i < 255; i += 1){
+    fill(hue, i, bright);
+    rect(boxSize + 10 + offsetX + i, offsetY + satOffset, 1, 5);
+  }
+  
+  //Brightness Gradient
+  for(int i = 0; i < 255; i += 1){
+    fill(hue, sat, i);
+    rect(boxSize + 10 + offsetX + i, offsetY + brightOffset, 1, 5);
+  }
+}
+
+//Draws the HSB Numbers by their Bars
+void drawNumbers(int offsetX, int offsetY){
+  fill(0,0,0);
+  
+  //Hue Number Display
+  text(str(hue), offsetX + 255 + 10, offsetY + hueOffset);
+  
+  //Saturation Number Display
+  text(str(sat), offsetX + 255 + 10, offsetY + satOffset);
+  
+  //Brightness Number Display
+  text(str(bright), offsetX + 255 + 10, offsetY + brightOffset);
+}
+
+//Draws a rectangle based on which gradient is selected
+void drawSelect(int offsetX, int offsetY){
+  stroke(255);
+  fill(255, 0);
+  
+  switch(select){
+    case 0:
+      rect(boxSize + 10 + offsetX + hue, offsetY + hueOffset, 3, 5);
+      break;
+    case 1:
+      rect(boxSize + 10 + offsetX + sat, offsetY + satOffset, 3, 5);
+      break;
+    case 2:
+      rect(boxSize + 10 + offsetX + bright, offsetY + brightOffset, 3, 5);
+      break;
+  }
+  noStroke();
+}
