@@ -35,7 +35,7 @@ function init(){
 
 //Preloads the addons
 function loadAddons(){
-    controls = new OrbitControls(camera, renderer.domElement);
+   //controls = new OrbitControls(camera, renderer.domElement);
 //    loader = new GLTFLoader(); // to load 3d models
 }
 
