@@ -413,5 +413,9 @@ nav .btn p{
     nav .btn p{
         display: none;
     }
+    
+    nav .btn.start p{
+        display: none;
+    }
 }
 
