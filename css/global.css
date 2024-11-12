@@ -167,9 +167,26 @@ body {
     background-color: var(--darkMain);
     display:flex;
     flex-direction: column;
-    width: 100%;
     border: 5px ridge;
     border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
+}
+
+@media screen and (min-width: 980px){
+    .description{
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 979px){
+    .description{
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .description{
+        width: 500px;
+    }
 }
 
 .page-content h1{
@@ -179,8 +196,8 @@ body {
 }
 
 .description {
+    margin: auto;
     background-color: var(--darkHighlight);
-    width: 900px;
     max-height: 40vh;
     overflow-y: scroll;
     scrollbar-width: thin;
@@ -367,9 +384,26 @@ nav .btn.start{
 }
 
 nav .btn p{
-    width: 200px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 930px){
+    nav .btn p {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 929px) and (min-width: 630px){
+    nav .btn p{
+        width: 50px;
+    }
+}
+
+@media screen and (max-width: 629px){
+    nav .btn p{
+        display: none;
+    }
 }
 
