@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuskOS v0.1a</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Link to your Javascript file as a type="module", this will execute the file after the HTML is loaded -->
+    <script type="module" src="/js/main.js"></script>
+</head>
+    
+
+<body>
+    <!--Logo and NavBar-->
+    <header>
+        <nav>
+             <li>
+                <a class="btn start" href="/index.html" title="Home">
+                    <img class="logo" src="/images/icon-start.png">
+                    START
+                </a>
+            </li>
+            <li>
+                <a class="btn" href="/projects/index.html" title="Projects">
+                    <img class="logo" src="/images/icon-folder.png">
+                    <p>Pictures</p>
+                </a>
+            </li>
+            <li> 
+                <a class="btn" href="#" title="Page Info">
+                    <img class="logo" src="/images/icon-info.png">
+                    <p>System Info</p>
+                </a>
+            </li>
+        </nav>
+        <aside class="gutter">
+            <clock id="clock">00:00 AM</clock>
+            <script src="/js/clock.js"></script>
+        </aside>
+    </header>
+    
+    <div id="scene-container">
+            <!--Javascript Scene will be injected here-->
+    </div>
+    
+    
+    <!-- Project Content -->
+    <main class="content-wrapper">
+        <section class="page-content">
+            <div class="page-header">
+                <div class="title">
+                    <img src="/images/icon-folder.png">
+                    <h1>Unrefined Storage Block</h1>
+                </div>
+                <div class="ui-buttons">
+                    <a href="/projects/" class="btn" title="Back">
+                        <img src="/images/icon-close.png">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image Container -->
+            <div class="image-container gutter">
+                <img src="/images/display-usb.png">
+            </div>
+            
+            <div class="description gutter">
+                <p>&emsp;Unrefined Storage Block (USB) is a game made for the San Jose State Spring 2024 group gallery exhibition, <a href="https://sjsu-dma-bfa.github.io/2024s/" target="_blank" title="Byte Me Webpage">Byte Me</a>. A download link to the game is available at the bottom of this page.
+                </p>
+                <p>&emsp;USB is designed to take after weird rpg maker games from the late 2000s like Yume Nikki. You control an avatar created for you to explore an alien reality called the void and posing as a member of a research team doing the same. Look around and talk to the various denizens you find within. Some may even notice your strange quirks of piloting an avatar.
+                </p>
+                <p>&emsp;This game is currently in development. Updates will occur as I am able. Be sure to check the itch page for news as it happens!
+                </p>
+                <a href="https://solarmoth.itch.io/usb" target="_blank" class="btn">
+                    <p>Click Here to Download</p>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

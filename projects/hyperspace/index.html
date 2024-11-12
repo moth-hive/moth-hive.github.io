@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuskOS v0.1a</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Link to your Javascript file as a type="module", this will execute the file after the HTML is loaded -->
+    <script type="module" src="/js/main.js"></script>
+</head>
+    
+
+<body>
+    <!--Logo and NavBar-->
+    <header>
+        <nav>
+             <li>
+                <a class="btn start" href="/index.html" title="Home">
+                    <img class="logo" src="/images/icon-start.png">
+                    START
+                </a>
+            </li>
+            <li>
+                <a class="btn" href="/projects/index.html" title="Projects">
+                    <img class="logo" src="/images/icon-folder.png">
+                    <p>Pictures</p>
+                </a>
+            </li>
+            <li> 
+                <a class="btn" href="#" title="Page Info">
+                    <img class="logo" src="/images/icon-info.png">
+                    <p>System Info</p>
+                </a>
+            </li>
+        </nav>
+        <aside class="gutter">
+            <clock id="clock">00:00 AM</clock>
+            <script src="/js/clock.js"></script>
+        </aside>
+    </header>
+    
+    <div id="scene-container">
+            <!--Javascript Scene will be injected here-->
+    </div>
+    
+    
+    <!-- Project Content -->
+    <main class="content-wrapper">
+        <section class="page-content">
+            <div class="page-header">
+                <div class="title">
+                    <img src="/images/icon-folder.png">
+                    <h1>Hyperspace Moth | 2019</h1>
+                </div>
+                <div class="ui-buttons">
+                    <a href="/projects/" class="btn" title="Back">
+                        <img src="/images/icon-close.png">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image Container -->
+            <div class="image-container gutter">
+                <img src="/images/display-hyperspace1.png" class="slides">
+                <img src="/images/display-hyperspace2.jpg" class="slides">
+                <img src="/images/display-hyperspace3.jpg" class="slides">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+                <script src="/js/slideshow.js"></script>
+            </div>
+            
+            <!--Text Content -->
+            <div class="description gutter">
+                <p>&emsp;Hyperspace Moth is an exercise in glitch art using an image I <a href="https://www.deviantart.com/kipine/art/moth-775597914" target="_blank" title="Credit to Kipine on Deviantart">sourced from the web</a> and used an AI tool called deep dream to distort for one step and ran through several audio filters for the second.
+                </p>
+                <p>&emsp;While I haven't used deep dream since then, the utility and novelty of the tool was fairly interesting when I did use it. Rather than attempt to completely create new images based on a training set, it would allow one to input an image or a video and provide another as a source to pull from. The results that I had seen were videos of frogs distorted through an image of nonsense that would make it constantly transform and shift from a bus to a mass of eyes and so on. Freaky, gross to look at, and eldritch in nature. I was in love.</p>
+                <p>&emsp;Of course, being able to use any image as source material for the digital equivalent of recreation via collage means that you can use more than an i-spy page as a source. Hence, the second image in the set, recreating the source image through a galaxy wallpaper sourced from google images (sadly lost from my computer making it near impossible to find the source.)
+                </p>
+                <p>&emsp;The name "Hyperspace Moth" stems from what I believed the image to look like once I took it out of the image shredder that was the reverb filter on audacity. It reminded me of special effects in sci-fi movies of people entering hyper space or faster than light travel, going so fast that the people turn into smear frames on the screen and stare into a light show. My one complaint is the lack of documentation on the filters used, preventing me from ever being able to recreate the effect on other images.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

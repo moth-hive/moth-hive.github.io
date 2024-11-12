@@ -7,107 +7,95 @@ import * as THREE from 'three';
 
 // Import add-ons
 import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
+//import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
 
-let scene, camera, renderer, controls, loader;
-let mixer;
-let grass, sun, light, carbuncle;
-const clock = new THREE.Clock();
-let sunScroll = 0;
-let sceneContanier = document.querySelector("#scene-container");
+let scene, camera, renderer, loader;
+let sceneContainer = document.querySelector("#scene-container");
+let wall, particles;
 
-// Preliminary starter things to set up the scene and camera
+let controls;
+
+//Initialization function that runs at the start of the script
 function init(){
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, sceneContanier.clientWidth/sceneContanier.clientHeight, 0.1, 1000);
-
+    camera = new THREE.PerspectiveCamera(75, sceneContainer.clientWidth/sceneContainer.clientHeight, 0.1, 1000);
+    
     renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true
     });
     
     // scene is parented to a container and constrained to that size
-    renderer.setSize(sceneContanier.clientWidth, sceneContanier.clientHeight);
-    sceneContanier.appendChild(renderer.domElement);
-    
-    /* scene is window size and parented to the document body
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-    */
+    renderer.setSize(sceneContainer.clientWidth, sceneContainer.clientHeight);
+    sceneContainer.appendChild(renderer.domElement);
     
     loadAddons();
     loadScene();
 }
 
+//Preloads the addons
 function loadAddons(){
-    //controls = new OrbitControls(camera, renderer.domElement);
-    loader = new GLTFLoader(); // to load 3d models
+    controls = new OrbitControls(camera, renderer.domElement);
+//    loader = new GLTFLoader(); // to load 3d models
 }
 
-function loadScene(){
-    //Grass
-    const geometry1 = new THREE.PlaneGeometry(16, 16);
-    const texture1 = new THREE.TextureLoader().load('assets/grass.jpg');
-    const material1 = new THREE.MeshBasicMaterial({map: texture1});
-    grass = new THREE.Mesh(geometry1, material1);
-    scene.add(grass);
-    
-    grass.position.y = -1;
-    grass.rotation.x = DegreeToRadians(-90);
-    
-    //the Sun
-    const geometry2 = new THREE.SphereGeometry(1, 16, 16);
-    const texture2 = new THREE.TextureLoader().load('assets/sun.png');
-    const material2 = new THREE.MeshBasicMaterial({map: texture2});
-    sun = new THREE.Mesh(geometry2, material2);
-    scene.add(sun);
-    
-    sun.position.z = 0;
-    sun.position.y = 25;
-    sun.position.x = -30;
-    
-    //little guy
-    loader.load('assets/carbuncle.gltf', function(gltf){
-        carbuncle = gltf.scene;
-        carbuncle.scale.set(2,2,2);
-        carbuncle.position.y = -1;
-        
-        scene.add(carbuncle);
-        mixer = new THREE.AnimationMixer(carbuncle);
-        const clips = gltf.animations;
-        const clip = THREE.AnimationClip.findByName(clips, 'TailWag');
-        const action = mixer.clipAction(clip);
-        action.play();
+function createWall(){
+    const geom = new THREE.PlaneGeometry(16, 14);
+    const tex = new THREE.TextureLoader().load('/assets/tex_wall.jpg');
+    const mat = new THREE.MeshBasicMaterial({
+        map: tex,
+        color: 0x161e30
     });
     
-    light = new THREE.AmbientLight(0xFFFFFF);
+    wall = new THREE.Mesh(geom, mat);
+    scene.add(wall);
+}
+                                                     
+function createBugs(){
+    //Setting up particle geometry and position of particles
+    const geo = new THREE.BufferGeometry();
+    const count = 500;
+    
+    const posArray = new Float32Array(count * 3);
+    for(let i = 0; i < count * 3; i++){
+        posArray[i] = (Math.random() - 0.5) * 10;
+    }
+    
+    geo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    
+    //Textures
+    const tex = new THREE.TextureLoader().load("/assets/tex_firefly.png");
+    
+    //Material
+    const mat = new THREE.PointsMaterial({
+        size: 0.5,
+        transparent: true,
+        map: tex
+    });
+    
+    //Initialization
+    particles = new THREE.Points(geo, mat);
+    scene.add(particles);
+    
+    particles.position.z = -2;
+}
+
+//Sets up the scene itself
+function loadScene(){
+    createWall();
+    createBugs();
     
     camera.position.z = 5;
-    camera.position.y = 1;
-    camera.position.x = -1;
-    camera.rotation.y = DegreeToRadians(30);
 }
 
-//Animation loop
-function animate(){
-    requestAnimationFrame(animate);
+//Update loop that happens every frame
+function update(){
+    particles.rotation.y += 0.01;
     
-    sun.rotation.y += 0.002;
-    sunScroll += 1;
-    
-    sun.position.x = 45 * Math.sin(sunScroll/1000);
-    sun.position.z = 40 * Math.cos(sunScroll/1000);
-    mixer.update(clock.getDelta());
+    //Renders new frame and calls next frame
     renderer.render(scene, camera);
+    requestAnimationFrame(update);
 }
-
-addEventListener("wheel", (event) => {
-    sunScroll += event.deltaY/3;
-    
-    //console.log(event.deltaY);
-    console.log(sun.position.x);
-    
-});
 
 //Adjusts the camera when the window resizes
 function onWindowResize(){
@@ -119,12 +107,10 @@ function onWindowResize(){
 window.addEventListener('resize', onWindowResize, false);
 
 init();
-animate();
-
-
-// ~~~~~~~~~~~~~~~~ Initiate add-ons ~~~~~~~~~~~~~~~~
-
-
+update();
+    
+// ~~~~~~~~~Extra Stuff~~~~~~~~~~ //
+    
 //Math thing to help me
 function DegreeToRadians(degree){
     let radian = degree * (Math.PI/180);

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuskOS v0.1a</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Link to your Javascript file as a type="module", this will execute the file after the HTML is loaded -->
+    <script type="module" src="/js/main.js"></script>
+</head>
+    
+
+<body>
+    <!--Logo and NavBar-->
+    <header>
+        <nav>
+             <li>
+                <a class="btn start" href="/index.html" title="Home">
+                    <img class="logo" src="/images/icon-start.png">
+                    START
+                </a>
+            </li>
+            <li>
+                <a class="btn" href="/projects/index.html" title="Projects">
+                    <img class="logo" src="/images/icon-folder.png">
+                    <p>Pictures</p>
+                </a>
+            </li>
+            <li> 
+                <a class="btn" href="#" title="Page Info">
+                    <img class="logo" src="/images/icon-info.png">
+                    <p>System Info</p>
+                </a>
+            </li>
+        </nav>
+        <aside class="gutter">
+            <clock id="clock">00:00 AM</clock>
+            <script src="/js/clock.js"></script>
+        </aside>
+    </header>
+    
+    <div id="scene-container">
+            <!--Javascript Scene will be injected here-->
+    </div>
+    
+    
+    <!-- Project Content -->
+    <main class="content-wrapper">
+        <section class="page-content">
+            <div class="page-header">
+                <div class="title">
+                    <img src="/images/icon-folder.png">
+                    <h1>Climbin' Out of the Sauce | 2022</h1>
+                </div>
+                <div class="ui-buttons">
+                    <a href="/projects/" class="btn" title="Back">
+                        <img src="/images/icon-close.png">
+                    </a>
+                </div>
+            </div>
+            <div class="image-container gutter">
+                <img src="/images/display-sauce.png">
+            </div>
+            
+            <!--Text Content -->
+            <div class="description gutter">
+                <p>&emsp;Back in 2022, I was surveying the internet for roleplay and tabletop communities to try and make some stories and get through some bad writer's block. The resulting place was a post-apocalyptic city that was overtaken by gang warfare and slime, the players being the gangsters.
+                </p>
+                <p>&emsp;Climbin' out of the Sauce is the result of me taking the mascot I was using at the time and drawing an explanation for how she ended up in the world in the first place. In the setting, there is an eldritch variation of slime called negaslime that is related to the afterlife and collects in the sewers. This moth was the result of hundreds if not thousands of dead and crushed bugs washing down the sewers in antislime and sparking enough will to coalesce it into its own new being, as seen above. She is quite literally, climbing out of the sauce.
+                </p>
+                <p>&emsp;Little did I know at the time, but this sparked an entirely new project that would occupy my mind even now as I write this. As an exercise in breaking through art block, this was beyond successful.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

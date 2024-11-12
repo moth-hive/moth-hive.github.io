@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuskOS v0.1a</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Link to your Javascript file as a type="module", this will execute the file after the HTML is loaded -->
+    <script type="module" src="/js/main.js"></script>
+</head>
+    
+
+<body>
+    <!--Logo and NavBar-->
+    <header>
+        <nav>
+             <li>
+                <a class="btn start" href="/index.html" title="Home">
+                    <img class="logo" src="/images/icon-start.png">
+                    START
+                </a>
+            </li>
+            <li>
+                <a class="btn" href="/projects/index.html" title="Projects">
+                    <img class="logo" src="/images/icon-folder.png">
+                    <p>Pictures</p>
+                </a>
+            </li>
+            <li> 
+                <a class="btn" href="#" title="Page Info">
+                    <img class="logo" src="/images/icon-info.png">
+                    <p>System Info</p>
+                </a>
+            </li>
+        </nav>
+        <aside class="gutter">
+            <clock id="clock">00:00 AM</clock>
+            <script src="/js/clock.js"></script>
+        </aside>
+    </header>
+    
+    <div id="scene-container">
+            <!--Javascript Scene will be injected here-->
+    </div>
+    
+    
+    <!-- Project Content -->
+    <main class="content-wrapper">
+        <section class="page-content">
+            <div class="page-header">
+                <div class="title">
+                    <img src="/images/icon-folder.png">
+                    <h1>BugQuest | 2022</h1>
+                </div>
+                <div class="ui-buttons">
+                    <a href="/projects/" class="btn" title="Back">
+                        <img src="/images/icon-close.png">
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Image Container -->
+            <div class="image-container gutter">
+                <img src="/images/display-bugquest1.png" class="slides">
+                <img src="/images/display-bugquest2.gif" class="slides">
+                <img src="/images/display-bugquest3.gif" class="slides">
+                <img src="/images/display-bugquest4.gif" class="slides">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+                <script src="/js/slideshow.js"></script>
+            </div>
+            
+            <!--Text Content -->
+            <div class="description gutter">
+                <p>&emsp;Bugquest is a webcomic that was run in the summer of 2022 and has been on an indefinite hiatus since. The comic uses reader commands to dictate the direction of the story, allowing readers to give commands as to what the characters will do akin to a text based adventure game.
+                </p>
+                <p>&emsp;The project began as a second attempt at a comic of a similar premise titled Mothquest that I ran a few years prior to little success. The unfortuante nature of a comic run by reader commands is that without any readers, there's no action; something that Bugquest managed to get past by being run on discord and done through grabbing people from aggregate communities I was active in at the time.
+                </p>
+                <p>&emsp;Unfortunately, the comic entered hiatus due to not having as much time to run it with the start of a new semester and starting a new job, very quickly leading to burnout as I attempted to maintain it. As of now, it still sits on hiatus as a project I intend to return to once I'm able to fit it into my schedule.</p>
+                <p>&emsp;If you would like to read it, the comic can be found via the link below.</p>
+                <a href="https://mspfa.com/?s=46466&p=1" target="_blank" class="btn">
+                    <p>Click Here to Read</p>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

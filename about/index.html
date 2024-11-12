@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuskOS v0.1a | Sys. Info</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <!-- Link to your Javascript file as a type="module", this will execute the file after the HTML is loaded -->
+    <script type="module" src="/js/main.js"></script>
+</head>
+    
+
+<body>
+    <!--Logo and NavBar-->
+    <header>
+        <nav>
+             <li>
+                <a class="btn start" href="/index.html" title="Home">
+                    <img class="logo" src="/images/icon-start.png">
+                    START
+                </a>
+            </li>
+            <li>
+                <a class="btn" href="/projects/index.html" title="Projects">
+                    <img class="logo" src="/images/icon-folder.png">
+                    <p>Pictures</p>
+                </a>
+            </li>
+            <li> 
+                <a class="btn" href="#" title="Page Info">
+                    <img class="logo" src="/images/icon-info.png">
+                    <p>System Info</p>
+                </a>
+            </li>
+        </nav>
+        <aside class="gutter">
+            <clock id="clock">00:00 AM</clock>
+            <script src="/js/clock.js"></script>
+        </aside>
+    </header>
+    
+    <div id="scene-container">
+            <!--Javascript Scene will be injected here-->
+    </div>
+    
+    
+    <!-- Project Content -->
+    <main class="content-wrapper">
+        <section class="page-content">
+            <div class="page-header">
+                <div class="title">
+                    <img src="/images/icon-info.png">
+                    <h1>About</h1>
+                </div>
+                <div class="ui-buttons">
+                    <a href="/index.html" class="btn" title="Back">
+                        <img src="/images/icon-close.png">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row">            
+            <!-- [TODO]: Add About Me Image -->
+            <div class="image-container gutter">
+                <img src="/images/display-temp.jpg">
+            </div>
+            
+            <div class="description gutter">
+                <p>&emsp;Rhea "Moth" Cobb is a freelance digital artist and game designer currently working on her bachelors in Digital Arts at San Jose State University. Her practice mainly includes giving form to ideas that take her attention in the form of characters and settings, often with a fantastical spin on it.
+                </p>
+                <p>Likes: Bugs, Final Fantasy, Multi-hour Videos on Technical Topics
+                </p>
+            </div>
+            </div>
+            <div class="page-footer gutter">
+                <p>© Copyright Rhea Cobb - All Rights Reserved</p>
+                <div class="icon-container">
+                    <a href="mailto:bigmothswarm@proton.me" target="_blank" title="Email Me">
+                        <img src="/images/icon-mail.png">
+                    </a>
+                    <a href="https://solarmoth.itch.io/" target="_blank" title="Itch.io">
+                        <img src="/images/icon-itch.png">
+                    </a>
+                    <a href="https://buggedinkstains.tumblr.com/" target="_blank" title="Tumblr">
+                        <img src="/images/icon-tumblr.png">
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

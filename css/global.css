@@ -7,7 +7,7 @@
     --darkBack: #020a55;
     --darkHighlight: #93a5be;
     --darkText: #f2f2f2;
-    
+    --darkCanvas: #020918;
     
 }
 
@@ -55,8 +55,7 @@ body {
     z-index: -1;
     width: 100%;
     height: 100%;
-    background: url("../assets/skybox.jpg") no-repeat center center;
-    background-size: cover;
+    background-color: var(--darkCanvas);
     margin: 0 auto;
 }
 
@@ -160,6 +159,10 @@ body {
  	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
 }
 
+.row {
+    display:flex;
+}
+
 .page-content {
     background-color: var(--darkMain);
     display:flex;
@@ -169,23 +172,10 @@ body {
     border-color: var(--darkHighlight) var(--darkBack) var(--darkBack) var(--darkHighlight);
 }
 
-.image-container img{
-    margin: 0 auto;
-    display: block;
-    height: 30vh;
-}
-
 .page-content h1{
     font-size: 3rem;
     margin: 0;
     padding: 0;
-}
-
-.image-container {
-    padding: 0;
-    margin: 15px;
-    background-color: var(--darkHighlight);
-    max-height: 30vh;
 }
 
 .description {
@@ -200,6 +190,90 @@ body {
 .description p{
     padding: 0 5px;
 }
+
+.description a{
+    text-decoration: none;
+    color: var(--darkBack);
+}
+
+.description .btn{
+    align-items: center;
+    margin: 4px auto;
+    max-width: 250px;
+}
+
+.page-footer{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px;
+}
+
+.page-footer p{
+    margin: 0px;
+}
+
+.icon-container{
+    display: flex;
+}
+
+/* Image Slideshow */
+/*--------------------*/
+
+.image-container {
+    position: relative;
+    padding: 0;
+    margin: 15px;
+    background-color: var(--darkHighlight);
+    max-height: 30vh;
+}
+
+.image-container img{
+    margin: 0 auto;
+    display: block;
+    height: 30vh;
+}
+
+.slides{
+    display: none;
+}
+
+.prev, .next{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    font-size: 3rem;
+    user-select: none;
+}
+
+.next{
+    right: 0;
+}
+
+.dot-container{
+    position: absolute;
+    text-align:center;
+    top:90%;
+    right: 45%;
+}
+
+.dot{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #aaa;
+}
+
+.active, .dot:hover{
+    background-color: #666;
+}
+
 
 /* Project Menu */
 /*--------------------*/
