@@ -90,7 +90,7 @@ function loadScene(){
 
 //Update loop that happens every frame
 function update(){
-    particles.rotation.y += 0.01;
+    particles.rotation.y += 0.001;
     
     //Renders new frame and calls next frame
     renderer.render(scene, camera);
