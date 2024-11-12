@@ -99,9 +99,9 @@ function update(){
 
 //Adjusts the camera when the window resizes
 function onWindowResize(){
-    camera.aspect = sceneContanier.clientWidth/sceneContanier.clientHeight;
+    camera.aspect = sceneContainer.clientWidth/sceneContainer.clientHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(sceneContanier.clientWidth, sceneContanier.clientHeight);
+    renderer.setSize(sceneContainer.clientWidth, sceneContainer.clientHeight);
 }
 
 window.addEventListener('resize', onWindowResize, false);

@@ -159,8 +159,16 @@ body {
  	-ms-interpolation-mode: nearest-neighbor;   /* IE8+                           */
 }
 
-.row {
-    display:flex;
+@media screen and (min-width: 1250px){
+    .row {
+        display:flex;
+    }
+}
+
+@media screen and (max-width: 1249px){
+    .row{
+        display: block;
+    }
 }
 
 .page-content {
